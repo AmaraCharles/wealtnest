@@ -1,0 +1,360 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 19 Sep 2025 18:11:31 at https://WealthNest.com +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://WealthNest.com -O1 "C:\webby\flux" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+
+
+Information, Warnings and Errors reported for this mirror:
+
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+
+	such as username/password authentication for websites mirrored in this project
+
+	do not share these files/folders if you want these information to remain private
+
+
+
+18:15:45	Error: 	"Error when decompressing" (-1) at link https://WealthNest.com/“https://www.smartsupp.com” (from https://WealthNest.com/)
+
+18:15:53	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/parallaxie.js (from https://WealthNest.com/)
+
+18:15:53	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/gsap.min.js (from https://WealthNest.com/)
+
+18:15:53	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/magiccursor.js (from https://WealthNest.com/)
+
+18:15:53	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/splitType.js (from https://WealthNest.com/)
+
+18:15:53	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/ScrollTrigger.min.js (from https://WealthNest.com/)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/jquery.mb.YTPlayer.min.js (from https://WealthNest.com/)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/wow.js (from https://WealthNest.com/)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/js/function.js (from https://WealthNest.com/)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-brands-400.woff2 (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-brands-400.ttf (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-regular-400.woff2 (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-regular-400.ttf (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-solid-900.woff2 (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-solid-900.ttf (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-v4compatibility.woff2 (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/webfonts/fa-v4compatibility.ttf (from https://WealthNest.com/css/all.min.css)
+
+18:15:54	Error: 	"Not Found" (404) at link https://WealthNest.com/images/bg-hero_newg.png (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-left.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-right.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-checkbox.png (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/download-app-item-bg.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/crypto-calculator-bg.png (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-down-arrow.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/testimonial-2.png (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-hero-image.png (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-double-quotes-1.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-double-quotes-2.svg (from https://WealthNest.com/css/custom.css)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-all.mp4 (from https://WealthNest.com/why_wealthnest)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-image-stock.jpg (from https://WealthNest.com/why_wealthnest)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-copy-trade-icon.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:55	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-manager-icon.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:56	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-top.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:56	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-real-order-execution-icon.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-friendly-mobile-view-icon.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-daily-news-icon.png (from https://WealthNest.com/why_wealthnest)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-trade.jpg (from https://WealthNest.com/why_wealthnest)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-passion.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-humility-2.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-sustainable.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-strive-image.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-medical.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-friendly-office.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-family-care-1.png (from https://WealthNest.com/careers)
+
+18:15:57	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/quivox-trade-employee.webp (from https://WealthNest.com/careers)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-working.png (from https://WealthNest.com/careers)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/quivox-trade-partnership.jpg (from https://WealthNest.com/careers)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-affiliate.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-stats.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-manager.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-programs.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-pay.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-local.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/get-link-icon.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/get-clicks-icon.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/get-profits-icon.png (from https://WealthNest.com/affiliate)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-insurance.png (from https://WealthNest.com/insurance)
+
+18:15:58	Error: 	"Forbidden" (403) at link https://WealthNest.com/credit-spread/ (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-hero-image-retirement.jpg (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/credit-spread/signup-credit-spread.php (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/credit-spread/credit-spread-singin.php (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-income.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-capped-lisk.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-time-advantage.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:58	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-win-win-strategy.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/credit-spread/signup-credit-spread (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-reliable-income.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-stocks.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-retirement.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-combine-strategy.jpg (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-automaated-recommendation.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-risk-management.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-education.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-retirment.png (from https://WealthNest.com/credit-spread.php)
+
+18:15:59	Error: 	"Not Found" (404) at link https://WealthNest.com/setrading-services (from https://WealthNest.com/trading-services)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-mt-4.png (from https://WealthNest.com/trading-services)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-advance-trading-tools.png (from https://WealthNest.com/trading-signal)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-copy.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-mirror-trade.mp4 (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/set-up-copys.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/monitor.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/no-forex-experiencw.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/gain-insight.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/diversify-portfolio.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/fast-trade-execution.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/total-control.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/set-it-running.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/invest-withdraw.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/quivox-trade-benefit.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/master.png (from https://WealthNest.com/copytrading)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/master-create-account.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/setup-account.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/gain.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/diversify.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/tracking-wallet.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/deposit-icon.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/device.png (from https://WealthNest.com/master)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-fx2.png (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-fx5.png (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-fx6.png (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-fx7.png (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-fx1.png (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/trade-strat-iq-forex.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-1.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-2.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-3.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-4.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-5.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-6.webp (from https://WealthNest.com/forex-cfds)
+
+18:15:59	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c1.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c2.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c3.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c4.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c5.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c6.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c7.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-c9.png (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/commodities.webp (from https://WealthNest.com/commodities)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-i2.png (from https://WealthNest.com/indices-cfd)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-i5.png (from https://WealthNest.com/indices-cfd)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-i7.png (from https://WealthNest.com/indices-cfd)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-i12.png (from https://WealthNest.com/indices-cfd)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/indices.webp (from https://WealthNest.com/indices-cfd)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r2.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r4.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r5.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r8.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r9.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r11.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r10.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r12.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r14.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-r13.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/mobile-img-1.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/mobile-img-2.png (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/real-stocks.webp (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/wealthnest-market.mp4 (from https://WealthNest.com/real-stocks)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/futures.webp (from https://WealthNest.com/futures)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/video1.mp4 (from https://WealthNest.com/futures)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr1.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr3.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr4.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr5.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr7.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr8.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr9.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:00	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr11.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr10.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/icon-ticker-cr12.png (from https://WealthNest.com/cryptocurrencies)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/crypto.webp (from https://WealthNest.com/cryptocurrencies)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/macbook-pro-4.jpg (from https://WealthNest.com/promotion)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/iphone16.jpg (from https://WealthNest.com/promotion)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/samsung.jpg (from https://WealthNest.com/promotion)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/iphone16-quivox-trade-promotion.png (from https://WealthNest.com/promotion)
+
+18:16:01	Error: 	"Not Found" (404) at link https://WealthNest.com/style.css (from https://WealthNest.com/register)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/users/signup-organization (from https://WealthNest.com/register)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/img/organization.png (from https://WealthNest.com/register)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/users/signup-individual (from https://WealthNest.com/register)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/img/individual.png (from https://WealthNest.com/register)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/users/organization-signin (from https://WealthNest.com/login)
+
+18:16:01	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/users/individual-singin (from https://WealthNest.com/login)
+
+18:16:02	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/newyorktimes.jpg (from https://WealthNest.com/master-rating)
+
+18:16:02	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/jacklarkin.jpg (from https://WealthNest.com/master-rating)
+
+18:16:02	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/noah.jpg (from https://WealthNest.com/master-rating)
+
+18:16:02	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/noahj.jpg (from https://WealthNest.com/master-rating)
+
+18:16:02	Error: 	"Too Many Requests" (429) at link https://WealthNest.com/images/blackdaimond.jpg (from https://WealthNest.com/master-rating)
+
+18:16:02	Error: 	"Not Found" (404) at link https://WealthNest.com/Version/ (from https://WealthNest.com/js/swiper-bundle.min.js)
+
+18:16:02	Error: 	"Not Found" (404) at link https://WealthNest.com/e (from https://WealthNest.com/js/swiper-bundle.min.js)
+
+18:16:02	Error: 	"Not Found" (404) at link https://WealthNest.com/t.params.url (from https://WealthNest.com/js/swiper-bundle.min.js)
+
+
+
+HTTrack Website Copier/3.49-2 mirror complete in 4 minutes 31 seconds : 267 links scanned, 97 files written (21739378 bytes overall) [20342366 bytes received at 75064 bytes/sec], 1956924 bytes transferred using HTTP compression in 52 files, ratio 21%, 17.9 requests per connection
+
+(169 errors, 0 warnings, 0 messages)
+
