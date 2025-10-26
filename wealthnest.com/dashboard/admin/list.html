@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <title>WealtNest</title>
+  <title>wealtnest</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <meta content="" name="description">
   <meta content="" name="author"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -9117,7 +9117,7 @@
     <div id="header" class="header navbar-default">
       <!-- begin navbar-header -->
       <div class="navbar-header">
-        <h3>WealtNest</h3>      
+        <h3>wealtnest</h3>      
        
   <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
           <span class="icon-bar"></span>
@@ -9464,7 +9464,7 @@
              
                 var row = $('<tr>').appendTo(tbl);
                 $('<td>').text(`${user.name}`).appendTo(row);
-                    $('<td>').text(`${user.id}`).appendTo(row);
+                    $('<td>').text(`${user._id}`).appendTo(row);
               
                 $('<td><a style="display:inline-block;white-space: nowrap;"  class="btn-primary btn-lg pl-1 w-20 mr-3" onclick="sendUserDetail(\''+user._id+'\')"  >Create signal</a> </td>').appendTo (row);
                 $('<td><a style="display:inline-block;white-space: nowrap;" class="btn-success btn-lg pl-1 w-20 mr-3 " onclick="viewUserDetail(\''+user._id+'\')"  >Edit Profile</a> </td>').appendTo (row);
