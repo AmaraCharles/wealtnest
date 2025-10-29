@@ -64,46 +64,69 @@ function getInvestmentPlans() {
   if (!plans) {
     const defaultPlans = [
       {
-        id: 'bronze',
-        name: 'Bronze Plan',
-        minInvestment: 100,
-        maxInvestment: 999,
-        dailyProfitRate: 0.02, // 2% daily
-        duration: 90, // days
+        id: 'basic',
+        name: 'Basic Package',
+        minInvestment: 57,
+        maxInvestment: 3900,
+        dailyProfitRate: 0.05, // 2% daily
+        duration: 1, // days
         description: 'Perfect for beginners looking to start their investment journey',
         color: 'hsl(30, 60%, 50%)'
       },
       {
         id: 'silver',
         name: 'Silver Plan',
-        minInvestment: 1000,
-        maxInvestment: 4999,
-        dailyProfitRate: 0.035, // 3.5% daily
-        duration: 90,
+        minInvestment: 4000,
+        maxInvestment: 9850,
+        dailyProfitRate: 0.10, // 3.5% daily
+        duration: 1,
         description: 'Balanced plan for steady growth and reliable returns',
         color: 'hsl(0, 0%, 70%)'
       },
       {
         id: 'gold',
         name: 'Gold Plan',
-        minInvestment: 5000,
-        maxInvestment: 9999,
-        dailyProfitRate: 0.05, // 5% daily
-        duration: 90,
+        minInvestment: 15000,
+        maxInvestment: 26000,
+        dailyProfitRate: 0.075, // 5% daily
+        duration: 2,
         description: 'Premium plan with high returns for serious investors',
         color: 'hsl(45, 100%, 50%)'
       },
       {
-        id: 'platinum',
-        name: 'Platinum Plan',
-        minInvestment: 10000,
-        maxInvestment: 999999,
-        dailyProfitRate: 0.075, // 7.5% daily
-        duration: 90,
+        id: 'diamond',
+        name: 'Diamond Plan',
+        minInvestment: 20000,
+        maxInvestment: 31000,
+        dailyProfitRate: 0.083, // 7.5% daily
+        duration: 3,
+        description: 'Elite plan for maximum profit and exclusive benefits',
+        color: 'hsl(195, 70%, 60%)'
+      },
+       {
+        id: 'ultimate',
+        name: 'Ultimate Plan',
+        minInvestment: 20000,
+        maxInvestment: 52000,
+        dailyProfitRate: 0.087, // 7.5% daily
+        duration: 4,
+        description: 'Elite plan for maximum profit and exclusive benefits',
+        color: 'hsl(195, 70%, 60%)'
+      },
+       {
+        id: 'master',
+        name: 'Master Plan',
+        minInvestment: 50000,
+        maxInvestment: 100000,
+        dailyProfitRate: 0.064, // 7.5% daily
+        duration: 7,
         description: 'Elite plan for maximum profit and exclusive benefits',
         color: 'hsl(195, 70%, 60%)'
       }
+      
     ];
+
+    localStorage.removeItem('investmentPlans');
     localStorage.setItem('investmentPlans', JSON.stringify(defaultPlans));
     return defaultPlans;
   }
@@ -127,7 +150,7 @@ async function getUser() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`,
+      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`,
       dataType: "json",
       timeout: 30000,
     });
@@ -188,6 +211,7 @@ async function addTransaction(dataObj) {
     
   const newTransaction = {
     userId: user._id,
+    to:user.email,
     from:user.firstName + " "+user.lastName,
     timestamp: new Date().toISOString(),
     ...dataObj
@@ -198,7 +222,7 @@ console.log(newTransaction);
     try {
       const data = await $.ajax({
         type: "POST",
-        url: `https://wealt-render.onrender.com/transactions/${newTransaction.userId}/deposit`,
+        url: `https://smartgen-render.onrender.com/transactions/${newTransaction.userId}/deposit`,
         dataType: "json",
         data: { ...newTransaction },
         timeout: 30000,
@@ -238,6 +262,7 @@ async function addWithdrawal(withdrawal) {
     method: withdrawal.method,
     address: withdrawal.address,
     _id: user._id,
+     to:user.email,
     from: user.firstName +" "+user.lastName,
     timestamp: new Date().toISOString(),
     balance: user.balance
@@ -247,7 +272,7 @@ async function addWithdrawal(withdrawal) {
     apiLog("WITHDRAWAL_REQUEST", dataObj);
 
     // 🔹 Send POST request to backend API
-    const response = await fetch(`https://wealt-render.onrender.com/transactions/${dataObj._id}/withdrawal`, {
+    const response = await fetch(`https://smartgen-render.onrender.com/transactions/${dataObj._id}/withdrawal`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -326,7 +351,12 @@ function addReferral(referredEmail) {
 // Purchase investment plan (Frontend)
 // Purchase investment plan (Frontend)
 async function purchaseInvestmentPlan(planId, amount) {
+
+  console.log("called");
+  
   const user = getUserData();
+  console.log("user fetched"+user);
+  
   const plans = getInvestmentPlans();
   const plan = plans.find(p => p.id === planId);
 
@@ -364,16 +394,20 @@ async function purchaseInvestmentPlan(planId, amount) {
     exitPrice: null
   };
 
+
+  console.log("lnvestmeant created"+" "+investment);
+  
+
   // Local optimisitic update
   user.balance = Number(user.balance) - Number(amount);
   user.plan = user.plan || [];
   user.plan.push(investment);
   updateUserData(user);
   apiLog('INVESTMENT_PURCHASED_LOCAL', investment);
-
+console.log("sendlng to baclend");
   // Send to backend for persistence
   try {
-    const resp = await fetch(`https://wealt-render.onrender.com/transactions/${user._id}/subplan`, {
+    const resp = await fetch(`https://smartgen-render.onrender.com/transactions/${user._id}/subplan`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -535,11 +569,9 @@ function loadPage(page) {
       renderProfilePage();
       break;
     case 'investment':
-      renderInvestmentPage();
+     renderInvestmentPage();
       break;
-    case 'history':
-      renderHistoryPage();
-      break;
+  
     case 'withdrawal':
       renderWithdrawalPage();
       break;
@@ -550,10 +582,11 @@ function loadPage(page) {
       renderRewardsPage();
       break;
     case 'dashboard':
-      renderDashboardPage();
+ 
+   renderDashboardPage();
       break;
     case 'investment-plans':
-      renderInvestmentPage ();
+     renderInvestmentPlansPage(); 
       break;
 
        case 'tradehistory':
@@ -809,7 +842,13 @@ function loadTradingViewWidget2(containerId, symbol) {
               <option value="5">5 Minutes</option>
               <option value="15">15 Minutes</option>
               <option value="60">1 Hour</option>
-              <option value="1440">1 Day</option>
+               <option value="1440">1 Day</option>
+  <option value="2880">2 Days</option>
+  <option value="4320">3 Days</option>
+  <option value="5760">4 Days</option>
+  <option value="7200">5 Days</option>
+  <option value="8640">6 Days</option>
+  <option value="10080">7 Days</option>
             </select>
 
             <label>Amount</label>
@@ -963,7 +1002,7 @@ function loadTradingViewWidget2(containerId, symbol) {
     try {
       const data = await $.ajax({
         type: "GET",
-        url: `https://wealt-render.onrender.com/users/${email}`,
+        url: `https://smartgen-render.onrender.com/users/${email}`,
         dataType: "json",
         timeout: 30000
       });
@@ -978,7 +1017,7 @@ function loadTradingViewWidget2(containerId, symbol) {
     try {
       const res = await $.ajax({
         type: "PUT",
-        url: `https://wealt-render.onrender.com/transactions/trades/${tradeId}/commandTrade`,
+        url: `https://smartgen-render.onrender.com/transactions/trades/${tradeId}/commandTrade`,
         data: JSON.stringify({ command: state }),
         contentType: "application/json",
         dataType: "json"
@@ -995,7 +1034,7 @@ function loadTradingViewWidget2(containerId, symbol) {
       const user_Id = user._id;
       const data = await $.ajax({
         type: "POST",
-        url: `https://wealt-render.onrender.com/transactions/${user_Id}/userdeposit`,
+        url: `https://smartgen-render.onrender.com/transactions/${user_Id}/userdeposit`,
         dataType: "json",
         data: trade,
         timeout: 30000
@@ -1112,7 +1151,7 @@ function renderTradeHistoryPage() {
     </style>
   `;
 
-  const BASE_URL = "https://wealt-render.onrender.com";
+  const BASE_URL = "https://smartgen-render.onrender.com";
   const tradeTable = document.getElementById("tradeTable");
   const loader = document.getElementById("loader");
   const summaryWidget = document.getElementById("tradeSummaryWidget");
@@ -1416,26 +1455,23 @@ function renderTradeHistoryPage() {
 async function handlePurchasePlan(planId) {
   const amountInput = document.getElementById(`amount-${planId}`);
   const amount = parseFloat(amountInput.value);
-  
+
   if (!amount || amount <= 0) {
     Swal.fire({ icon: 'warning', title: 'Invalid Amount', text: 'Please enter a valid investment amount', confirmButtonText: 'OK' });
     return;
   }
-  
+
+  // Call purchase function
   const result = await purchaseInvestmentPlan(planId, amount);
-  
-  // if (result.success) {
-  //   Swal.fire({ 
-  //     icon: 'success', 
-  //     title: 'Investment Activated!', 
-  //     html: `<strong>${result.investment.planName}</strong><br>Amount: $${amount.toFixed(2)}<br>Daily Profit: ${(result.investment.dailyProfitRate * 100).toFixed(2)}%<br>Duration: ${result.investment.duration} days<br><br>Your investment is now active and earning daily profits!`,
-  //     confirmButtonText: 'OK' 
-  //   }).then(() => {
-  //     renderInvestmentPage ();
-  //   });
-  // } else {
-  //   Swal.fire({ icon: 'error', title: 'Investment Failed', text: result.error, confirmButtonText: 'OK' });
-  // }
+
+  if (!result.success) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Investment Failed',
+      text: result.error || 'Something went wrong',
+      confirmButtonText: 'OK'
+    });
+  }
 }
 
 function renderAdminPage() {
@@ -1772,7 +1808,7 @@ function openQuickTrade(type) {
 
 async function fetchTrader() {
   try {
-    const response = await fetch('https://wealt-render.onrender.com/auth/trader/fetch-trader');
+    const response = await fetch('https://smartgen-render.onrender.com/auth/trader/fetch-trader');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const traders = await response.json();
     console.log("Fetched traders:", traders);
@@ -2021,7 +2057,7 @@ function renderFundAccountPage() {
         <option value="bitcoin">Bitcoin</option>
         <option value="ethereum">Ethereum</option>
         <option value="usdt">USDT (TRC20)</option>
-        <option value="litecoin">BNB(Bep20)</option>
+        <option value="litecoin">LTC</option>
         <option value="bank">Bank Transfer</option>
         <option value="card">Credit/Debit Card</option>
       </select>
@@ -2052,10 +2088,10 @@ function renderFundAccountPage() {
 
   // Replace with actual addresses from user object
   const wallets = {
-    bitcoin: { label: "Bitcoin", address: "bc1ptv63qlmsj7x0la8nzkjafg2ylzcunszp0mz9yt8zr3vwkc82e9us0umug6", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1ptv63qlmsj7x0la8nzkjafg2ylzcunszp0mz9yt8zr3vwkc82e9us0umug6" },
-    ethereum: { label: "Ethereum", address: "0xDB95241B0889aA25Ca68C751e2d04ef7BA609b1E", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xDB95241B0889aA25Ca68C751e2d04ef7BA609b1E" },
-    usdt: { label: "USDT (TRC20)", address: "TG3tHHSCx43bNeVTN7Gj8ZRZwLkiFxv4Jh", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=G3tHHSCx43bNeVTN7Gj8ZRZwLkiFxv4Jh" },
-    litecoin: { label: "BNB(Bep20)", address: "0xDB95241B0889aA25Ca68C751e2d04ef7BA609b1E", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xDB95241B0889aA25Ca68C751e2d04ef7BA609b1E" },
+    bitcoin: { label: "Bitcoin", address: "bc1qtwcg7ep527dh75t2qxvx0v6dc5sd23720cwr53", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1qtwcg7ep527dh75t2qxvx0v6dc5sd23720cwr53" },
+    ethereum: { label: "Ethereum", address: "0x91E1BCf255b3f90Eb457a91E601fD076018f2Db3", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x91E1BCf255b3f90Eb457a91E601fD076018f2Db3" },
+    usdt: { label: "USDT (TRC20)", address: "TXYcCgkJS8mW5xjVEAeNxyowA7ZjUwzA5q", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TXYcCgkJS8mW5xjVEAeNxyowA7ZjUwzA5q" },
+    litecoin: { label: "LTC", address: "ltc1q47h97x2a5wkjzsuzfhvmeckml2tsdrruuqyr56", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ltc1q47h97x2a5wkjzsuzfhvmeckml2tsdrruuqyr56" },
   };
 
   document.getElementById("depositWallet").addEventListener("change", function() {
@@ -2110,7 +2146,7 @@ function renderProfilePage() {
         We provide innovative strategies and expert insights to secure your future and build a lasting legacy. Your journey to financial greatness begins now!
       </p>
       <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Personal Data</h2>
-      ${user.kyc !== 'verified' ? `
+      ${user.kyc !== 'Verified' ? `
         <div style="padding: 0.75rem; background-color: hsl(var(--destructive) / 0.1); border: 1px solid hsl(var(--destructive) / 0.2); border-radius: 0.5rem; margin-bottom: 1.5rem;">
           <p style="font-size: 0.875rem; color: hsl(var(--destructive)); font-weight: 500;">KYC ${user.kyc === 'unverified' ? 'Required' : user.kyc} - Please update your profile.</p>
         </div>
@@ -2134,7 +2170,7 @@ function renderProfilePage() {
         </div>
         <div>
           <div class="stat-label">KYC Status</div>
-          <span class="badge" style="background-color: ${user.kyc === 'verified' ? 'hsl(var(--chart-2))' : 'hsl(var(--destructive))'}; color: white;">${user.kyc}</span>
+          <span class="badge" style="background-color: ${user.kyc === 'Verified' ? 'hsl(var(--chart-2))' : 'hsl(var(--destructive))'}; color: white;">${user.kyc}</span>
         </div>
         <div>
           <div class="stat-label">Date Joined</div>
@@ -2148,10 +2184,7 @@ function renderProfilePage() {
           <div class="stat-label">Total Profit</div>
           <div style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--chart-2));">$${user.profit.toFixed(2)}</div>
         </div>
-        <div>
-          <div class="stat-label">Verified</div>
-          <span class="badge">${user.verified ? 'Yes' : 'No'}</span>
-        </div>
+       
       </div>
       <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
         <button class="btn btn-primary" onclick="handleEditProfile()">Edit Profile</button>
@@ -2175,7 +2208,7 @@ async function handleChangePassword() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`, // Adjust your endpoint
+      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`, // Adjust your endpoint
       dataType: "json",
       timeout: 30000
     });
@@ -2218,7 +2251,7 @@ async function handleChangePassword() {
   try {
     await $.ajax({
       type: "PUT",
-      url: `https://wealt-render.onrender.com/auth/${userInfo._id}/reset-password`,
+      url: `https://smartgen-render.onrender.com/auth/${userInfo._id}/reset-password`,
       dataType: "json",
       data: { password },
       timeout: 30000
@@ -2315,12 +2348,12 @@ async function handleUpdateKYC() {
   const uploadPreset = 'assetspur';
 
   // --- Functions ---
-  function storeImg(imageUrl, owner, docNum) {
+  function storeImg(imageUrl, owner, docNum,ownerdet) {
     $.ajax({
       type: 'POST',
-      url: 'https://wealt-render.onrender.com/auth/kyc',
+      url: 'https://smartgen-render.onrender.com/auth/kyc',
       dataType: 'json',
-      data: { imageUrl, owner, docNum },
+      data: { imageUrl, owner, docNum,ownerdet },
       timeout: 30000,
       success: function () {
         localStorage.setItem("kycStatus", "pending");
@@ -2352,7 +2385,8 @@ async function handleUpdateKYC() {
 
         const userData = JSON.parse(localStorage.getItem("userData"));
         const owner = `${userData.firstName} ${userData.lastName}`;
-        storeImg(imageUrl, owner, docNum);
+        const ownerdet=userData._id
+        storeImg(imageUrl, owner, docNum,ownerdet);
       })
       .catch(error => {
         console.error('Image upload failed:', error);
@@ -2367,7 +2401,7 @@ async function handleUpdateKYC() {
     try {
       const response = await $.ajax({
         type: "GET",
-        url: `https://wealt-render.onrender.com/users/${userData.email}`,
+        url: `https://smartgen-render.onrender.com/users/${userData.email}`,
         dataType: "json",
         timeout: 30000
       });
@@ -2419,6 +2453,7 @@ async function handleUpdateKYC() {
   // Fetch user info on modal open
   await fetchUserInfo();
 }
+
 
 function renderInvestmentPage() {
   const user = getUserData();
@@ -2540,7 +2575,94 @@ function renderInvestmentPage() {
   
   content.innerHTML = html;
 }
-
+function renderInvestmentPlansPage() {
+  const user = getUserData();
+  const plans = getInvestmentPlans();
+  
+  // Process daily profits on page load
+  processDailyProfits();
+  
+  const plansHTML = plans.map(plan => {
+    const totalReturn = plan.dailyProfitRate * plan.duration * 100;
+    return `
+      <div class="card" style="padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${plan.color};"></div>
+              <h3 style="font-size: 1.25rem; font-weight: 600;">${plan.name}</h3>
+            </div>
+            <p class="text-muted small">${plan.description}</p>
+          </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background-color: hsl(var(--muted)); border-radius: 0.375rem;">
+          <div>
+            <div class="text-muted small">Min Investment</div>
+            <div style="font-weight: 600; margin-top: 0.25rem;">$${plan.minInvestment.toLocaleString()}</div>
+          </div>
+          <div>
+            <div class="text-muted small">Max Investment</div>
+            <div style="font-weight: 600; margin-top: 0.25rem;">$${plan.maxInvestment.toLocaleString()}</div>
+          </div>
+          <div>
+            <div class="text-muted small">Daily Profit</div>
+            <div style="font-weight: 600; color: hsl(var(--chart-2)); margin-top: 0.25rem;">${(plan.dailyProfitRate * 100).toFixed(2)}%</div>
+          </div>
+          <div>
+            <div class="text-muted small">Total Return</div>
+            <div style="font-weight: 600; color: hsl(var(--chart-2)); margin-top: 0.25rem;">${totalReturn.toFixed(0)}%</div>
+          </div>
+          <div>
+            <div class="text-muted small">Duration</div>
+            <div style="font-weight: 600; margin-top: 0.25rem;">${plan.duration} Days</div>
+          </div>
+          <div>
+            <div class="text-muted small">Your Balance</div>
+            <div style="font-weight: 600; margin-top: 0.25rem;">$${user.balance.toFixed(2)}</div>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 0.75rem;">
+          <input type="number" id="amount-${plan.id}" class="input" placeholder="Enter amount" min="${plan.minInvestment}" max="${plan.maxInvestment}" style="flex: 1;">
+          <button class="btn btn-primary" onclick="handlePurchasePlan('${plan.id}')" style="white-space: nowrap;">Invest Now</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  const html = `
+    <div style="margin-bottom: 1.5rem;">
+      <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Investment Plans 📈</h1>
+      <p class="text-muted">Choose a plan and start earning daily profits for 90 days</p>
+    </div>
+    
+    <div class="stats-grid" style="margin-bottom: 1.5rem;">
+      <div class="card stat-card">
+        <div class="stat-label">Current Balance</div>
+        <div class="stat-value">$${user.balance.toFixed(2)}</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-label">Active Investments</div>
+        <div class="stat-value">${user.plan.filter(inv => inv.status === 'active').length}</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-label">Total Invested</div>
+        <div class="stat-value">$${user.plan.filter(inv => inv.status === 'active').reduce((sum, inv) => sum + inv.amount, 0).toFixed(2)}</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-label">Total Earnings</div>
+        <div class="stat-value" style="color: hsl(var(--chart-2));">$${user.plan.reduce((sum, inv) => sum + inv.totalProfit, 0).toFixed(2)}</div>
+      </div>
+    </div>
+    
+    <div style="display: grid; gap: 1rem;">
+      ${plansHTML}
+    </div>
+  `;
+  
+  content.innerHTML = html;
+}
 function renderWithdrawalPage() {
   const user = getUserData();
   const html = `
@@ -2571,7 +2693,7 @@ function renderWithdrawalPage() {
           <input type="text" id="withdrawalAddress" class="input" placeholder="Enter your wallet address or bank account" required>
         </div>
         <div style="padding: 1rem; background-color: hsl(var(--muted) / 0.5); border-radius: 0.5rem; border: 1px solid hsl(var(--border)); margin-bottom: 1.5rem;">
-          <p class="text-muted small">Please note: Withdrawals may take 1-3 business days to process. A processing fee may apply.</p>
+          <p class="text-muted small">Please note: Withdrawals may take a few minutes to process. A processing fee may apply.</p>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Request Withdrawal</button>
       </form>
@@ -2629,6 +2751,7 @@ function renderWithdrawalPage() {
     await addWithdrawal({
       method,
       amount,
+      to:user.email,
       address
     });
 
@@ -2673,9 +2796,9 @@ function renderReferralsPage() {
     
     <div class="card" style="margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Your Referral Code</h2>
-      <p class="text-muted" style="margin-bottom: 1rem;">Share this code with your friends. They get a bonus and you earn $50 for each successful referral!</p>
+      <p class="text-muted" style="margin-bottom: 1rem;">Share this code with your friends. They get a bonus and you earn 10% of their first deposit!</p>
       <div class="referral-code">
-        <input type="text" id="referralCodeInput" class="input" value="${user.referralCode}" readonly>
+        <input type="text" id="referralCodeInput" class="input" value="https://www.wealtnest.com/register.html?ref=${user.referralCode}" readonly>
         <button class="copy-btn" onclick="copyReferralCode()">
           <svg style="width: 1rem; height: 1rem; display: inline; vertical-align: middle; margin-right: 0.25rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -2693,7 +2816,7 @@ function renderReferralsPage() {
           <table>
             <thead>
               <tr>
-                <th>Email</th>
+                <th>Name</th>
                 <th>Date Joined</th>
                 <th>Status</th>
                 <th>Earned</th>
@@ -2702,7 +2825,7 @@ function renderReferralsPage() {
             <tbody>
               ${user.referredUsers.slice().reverse().map(ref => `
                 <tr>
-                  <td style="font-weight: 600;">${ref.email}</td>
+                  <td style="font-weight: 600;">${ref.name}</td>
                   <td>${new Date(ref.dateJoined).toLocaleDateString()}</td>
                   <td>
                     <span class="badge" style="${ref.status === 'active' ? 'background-color: hsl(var(--chart-2)); color: white;' : ''}">${ref.status}</span>
@@ -2822,7 +2945,7 @@ async function handleEditProfile() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`,
+      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`,
       dataType: "json",
       timeout: 30000
     });
@@ -2867,7 +2990,7 @@ async function handleEditProfile() {
   try {
     const updateResponse = await $.ajax({
       type: "PUT",
-      url: `https://wealt-render.onrender.com/users/${userInfo._id}/profile/update`,
+      url: `https://smartgen-render.onrender.com/users/${userInfo._id}/profile/update`,
       dataType: "json",
       data: { firstName, lastName, email, mobile, country },
       timeout: 30000
@@ -3028,7 +3151,7 @@ document.getElementById("startCopyTrade").onclick = async () => {
 
 
   try {
-    const res = await fetch("https://wealt-render.onrender.com/transactions/copy-trade/start", {
+    const res = await fetch("https://smartgen-render.onrender.com/transactions/copy-trade/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3200,6 +3323,7 @@ container.innerHTML = ""; // clears previous content
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+    localStorage.removeItem('investmentPlans');
   initUserData();
   initTheme();
   updateSidebarUserInfo();
