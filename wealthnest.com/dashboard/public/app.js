@@ -70,6 +70,7 @@ function getInvestmentPlans() {
         maxInvestment: 3900,
         dailyProfitRate: 0.05, // 2% daily
         duration: 1, // days
+        durationn: 24, // days
         description: 'Perfect for beginners looking to start their investment journey',
         color: 'hsl(30, 60%, 50%)'
       },
@@ -80,6 +81,7 @@ function getInvestmentPlans() {
         maxInvestment: 9850,
         dailyProfitRate: 0.10, // 3.5% daily
         duration: 1,
+         durationn: 24, // days
         description: 'Balanced plan for steady growth and reliable returns',
         color: 'hsl(0, 0%, 70%)'
       },
@@ -90,6 +92,7 @@ function getInvestmentPlans() {
         maxInvestment: 26000,
         dailyProfitRate: 0.075, // 5% daily
         duration: 2,
+         durationn: 48, // days
         description: 'Premium plan with high returns for serious investors',
         color: 'hsl(45, 100%, 50%)'
       },
@@ -100,6 +103,7 @@ function getInvestmentPlans() {
         maxInvestment: 31000,
         dailyProfitRate: 0.083, // 7.5% daily
         duration: 3,
+         durationn: 72, // days
         description: 'Elite plan for maximum profit and exclusive benefits',
         color: 'hsl(195, 70%, 60%)'
       },
@@ -110,6 +114,7 @@ function getInvestmentPlans() {
         maxInvestment: 52000,
         dailyProfitRate: 0.087, // 7.5% daily
         duration: 4,
+         durationn: 96, // days
         description: 'Elite plan for maximum profit and exclusive benefits',
         color: 'hsl(195, 70%, 60%)'
       },
@@ -120,6 +125,7 @@ function getInvestmentPlans() {
         maxInvestment: 100000,
         dailyProfitRate: 0.064, // 7.5% daily
         duration: 7,
+         durationn: 120, // days
         description: 'Elite plan for maximum profit and exclusive benefits',
         color: 'hsl(195, 70%, 60%)'
       }
@@ -150,7 +156,7 @@ async function getUser() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`,
+      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`,
       dataType: "json",
       timeout: 30000,
     });
@@ -222,7 +228,7 @@ console.log(newTransaction);
     try {
       const data = await $.ajax({
         type: "POST",
-        url: `https://smartgen-render.onrender.com/transactions/${newTransaction.userId}/deposit`,
+        url: `https://wealt-render.onrender.com/transactions/${newTransaction.userId}/deposit`,
         dataType: "json",
         data: { ...newTransaction },
         timeout: 30000,
@@ -272,7 +278,7 @@ async function addWithdrawal(withdrawal) {
     apiLog("WITHDRAWAL_REQUEST", dataObj);
 
     // 🔹 Send POST request to backend API
-    const response = await fetch(`https://smartgen-render.onrender.com/transactions/${dataObj._id}/withdrawal`, {
+    const response = await fetch(`https://wealt-render.onrender.com/transactions/${dataObj._id}/withdrawal`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -407,7 +413,7 @@ async function purchaseInvestmentPlan(planId, amount) {
 console.log("sendlng to baclend");
   // Send to backend for persistence
   try {
-    const resp = await fetch(`https://smartgen-render.onrender.com/transactions/${user._id}/subplan`, {
+    const resp = await fetch(`https://wealt-render.onrender.com/transactions/${user._id}/subplan`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1002,7 +1008,7 @@ function loadTradingViewWidget2(containerId, symbol) {
     try {
       const data = await $.ajax({
         type: "GET",
-        url: `https://smartgen-render.onrender.com/users/${email}`,
+        url: `https://wealt-render.onrender.com/users/${email}`,
         dataType: "json",
         timeout: 30000
       });
@@ -1017,7 +1023,7 @@ function loadTradingViewWidget2(containerId, symbol) {
     try {
       const res = await $.ajax({
         type: "PUT",
-        url: `https://smartgen-render.onrender.com/transactions/trades/${tradeId}/commandTrade`,
+        url: `https://wealt-render.onrender.com/transactions/trades/${tradeId}/commandTrade`,
         data: JSON.stringify({ command: state }),
         contentType: "application/json",
         dataType: "json"
@@ -1034,7 +1040,7 @@ function loadTradingViewWidget2(containerId, symbol) {
       const user_Id = user._id;
       const data = await $.ajax({
         type: "POST",
-        url: `https://smartgen-render.onrender.com/transactions/${user_Id}/userdeposit`,
+        url: `https://wealt-render.onrender.com/transactions/${user_Id}/userdeposit`,
         dataType: "json",
         data: trade,
         timeout: 30000
@@ -1151,7 +1157,7 @@ function renderTradeHistoryPage() {
     </style>
   `;
 
-  const BASE_URL = "https://smartgen-render.onrender.com";
+  const BASE_URL = "https://wealt-render.onrender.com";
   const tradeTable = document.getElementById("tradeTable");
   const loader = document.getElementById("loader");
   const summaryWidget = document.getElementById("tradeSummaryWidget");
@@ -1496,7 +1502,7 @@ function renderAdminPage() {
       </td>
       <td style="padding: 0.75rem; border-bottom: 1px solid hsl(var(--border));">$${plan.minInvestment} - $${plan.maxInvestment.toLocaleString()}</td>
       <td style="padding: 0.75rem; border-bottom: 1px solid hsl(var(--border));">${(plan.dailyProfitRate * 100).toFixed(2)}%</td>
-      <td style="padding: 0.75rem; border-bottom: 1px solid hsl(var(--border));">${plan.duration} days</td>
+      <td style="padding: 0.75rem; border-bottom: 1px solid hsl(var(--border));">${plan.durationn} hours</td>
       <td style="padding: 0.75rem; border-bottom: 1px solid hsl(var(--border));">
         <button class="btn" style="background-color: hsl(var(--destructive)); color: hsl(var(--destructive-foreground)); padding: 0.25rem 0.75rem; font-size: 0.875rem;" onclick="handleDeletePlan('${plan.id}')">Delete</button>
       </td>
@@ -1808,7 +1814,7 @@ function openQuickTrade(type) {
 
 async function fetchTrader() {
   try {
-    const response = await fetch('https://smartgen-render.onrender.com/auth/trader/fetch-trader');
+    const response = await fetch('https://wealt-render.onrender.com/auth/trader/fetch-trader');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const traders = await response.json();
     console.log("Fetched traders:", traders);
@@ -2057,7 +2063,7 @@ function renderFundAccountPage() {
         <option value="bitcoin">Bitcoin</option>
         <option value="ethereum">Ethereum</option>
         <option value="usdt">USDT (TRC20)</option>
-        <option value="litecoin">LTC</option>
+        <option value="doge">DOGE</option>
         <option value="bank">Bank Transfer</option>
         <option value="card">Credit/Debit Card</option>
       </select>
@@ -2088,10 +2094,10 @@ function renderFundAccountPage() {
 
   // Replace with actual addresses from user object
   const wallets = {
-    bitcoin: { label: "Bitcoin", address: "bc1qtwcg7ep527dh75t2qxvx0v6dc5sd23720cwr53", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1qtwcg7ep527dh75t2qxvx0v6dc5sd23720cwr53" },
-    ethereum: { label: "Ethereum", address: "0x91E1BCf255b3f90Eb457a91E601fD076018f2Db3", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x91E1BCf255b3f90Eb457a91E601fD076018f2Db3" },
-    usdt: { label: "USDT (TRC20)", address: "TXYcCgkJS8mW5xjVEAeNxyowA7ZjUwzA5q", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TXYcCgkJS8mW5xjVEAeNxyowA7ZjUwzA5q" },
-    litecoin: { label: "LTC", address: "ltc1q47h97x2a5wkjzsuzfhvmeckml2tsdrruuqyr56", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ltc1q47h97x2a5wkjzsuzfhvmeckml2tsdrruuqyr56" },
+    bitcoin: { label: "Bitcoin", address: "bc1q48sfgcpfylyr2q6vwwt703kh8nddm6hv678pz2", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1q48sfgcpfylyr2q6vwwt703kh8nddm6hv678pz2" },
+    ethereum: { label: "Ethereum", address: "0x1d4cdF64076135671aD47b95007B551B40084f6E", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x1d4cdF64076135671aD47b95007B551B40084f6E" },
+    usdt: { label: "USDT (TRC20)", address: "THtGJyF1bpY1jzW2QgpQaVHqN8Rh2oEGCj", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=THtGJyF1bpY1jzW2QgpQaVHqN8Rh2oEGCj" },
+    doge: { label: "DOGE", address: "D6o4bcHd8tChsLXQ4913ajiwg1HhxD56aV", qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=D6o4bcHd8tChsLXQ4913ajiwg1HhxD56aV" },
   };
 
   document.getElementById("depositWallet").addEventListener("change", function() {
@@ -2208,7 +2214,7 @@ async function handleChangePassword() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`, // Adjust your endpoint
+      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`, // Adjust your endpoint
       dataType: "json",
       timeout: 30000
     });
@@ -2251,7 +2257,7 @@ async function handleChangePassword() {
   try {
     await $.ajax({
       type: "PUT",
-      url: `https://smartgen-render.onrender.com/auth/${userInfo._id}/reset-password`,
+      url: `https://wealt-render.onrender.com/auth/${userInfo._id}/reset-password`,
       dataType: "json",
       data: { password },
       timeout: 30000
@@ -2351,7 +2357,7 @@ async function handleUpdateKYC() {
   function storeImg(imageUrl, owner, docNum,ownerdet) {
     $.ajax({
       type: 'POST',
-      url: 'https://smartgen-render.onrender.com/auth/kyc',
+      url: 'https://wealt-render.onrender.com/auth/kyc',
       dataType: 'json',
       data: { imageUrl, owner, docNum,ownerdet },
       timeout: 30000,
@@ -2401,7 +2407,7 @@ async function handleUpdateKYC() {
     try {
       const response = await $.ajax({
         type: "GET",
-        url: `https://smartgen-render.onrender.com/users/${userData.email}`,
+        url: `https://wealt-render.onrender.com/users/${userData.email}`,
         dataType: "json",
         timeout: 30000
       });
@@ -2457,124 +2463,241 @@ async function handleUpdateKYC() {
 
 function renderInvestmentPage() {
   const user = getUserData();
-  
-  // Process daily profits on page load
   processDailyProfits();
-  
-  const activeTransactions = user.transactions.filter(t => t.status === 'active' || t.type === 'trade');
-  const plan = user.plan.filter(inv => inv.status === 'active') || [];
+
+  const plan = user.plan.filter(inv => inv.status === "active") || [];
   const totalPnL = user.profit;
-  
-  const investmentsHTML = plan.length > 0 ? plan.map(inv => {
-    const dailyProfit = inv.amount * inv.dailyProfitRate;
-    const progress = (inv.daysElapsed / inv.duration) * 100;
-    const daysRemaining = inv.duration - inv.daysElapsed;
-    
-    return `
-      <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+
+  const investmentsHTML =
+    plan.length > 0
+      ? plan
+          .map(inv => {
+            const dailyProfit = inv.amount * inv.dailyProfitRate;
+            const progress = (inv.daysElapsed / inv.duration) * 100;
+            const daysRemaining = inv.duration - inv.daysElapsed;
+
+            return `
+        <div class="card" style="padding:1.5rem;margin-bottom:1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem;">
+            <div>
+              <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:0.25rem;">${inv.planName}</h3>
+              <p class="text-muted small">Started ${inv.startDate}</p>
+            </div>
+            <span class="badge" style="background-color:hsl(var(--chart-2));color:white;padding:0.25rem 0.75rem;border-radius:0.25rem;">${inv.status}</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1rem;">
+            <div>
+              <div class="text-muted small">Invested Amount</div>
+              <div style="font-weight:600;margin-top:0.25rem;">$${inv.amount.toFixed(2)}</div>
+            </div>
+            <div>
+              <div class="text-muted small">Daily Profit</div>
+              <div style="font-weight:600;color:hsl(var(--chart-2));margin-top:0.25rem;">$${dailyProfit.toFixed(2)} (${(
+              inv.dailyProfitRate * 100
+            ).toFixed(2)}%)</div>
+            </div>
+            <div>
+              <div class="text-muted small">Total Earned</div>
+              <div style="font-weight:600;color:hsl(var(--chart-2));margin-top:0.25rem;">$${inv.totalProfit.toFixed(
+                2
+              )}</div>
+            </div>
+            <div>
+              <div class="text-muted small">Days Remaining</div>
+              <div style="font-weight:600;margin-top:0.25rem;">${daysRemaining} / ${
+              inv.duration
+            }</div>
+            </div>
+          </div>
+
           <div>
-            <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem;">${inv.planName}</h3>
-            <p class="text-muted small">Started ${new Date(inv.startDate).toLocaleDateString()}</p>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+              <span class="text-muted small">Progress</span>
+              <span class="small" style="font-weight:600;">${progress.toFixed(1)}%</span>
+            </div>
+            <div style="width:100%;background-color:hsl(var(--muted));border-radius:9999px;height:8px;">
+              <div style="width:${progress}%;background-color:hsl(var(--chart-2));height:100%;border-radius:9999px;transition:width 0.3s;"></div>
+            </div>
           </div>
-          <span class="badge" style="background-color: hsl(var(--chart-2)); color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem;">Active</span>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-          <div>
-            <div class="text-muted small">Invested Amount</div>
-            <div style="font-weight: 600; margin-top: 0.25rem;">$${inv.amount.toFixed(2)}</div>
-          </div>
-          <div>
-            <div class="text-muted small">Daily Profit</div>
-            <div style="font-weight: 600; color: hsl(var(--chart-2)); margin-top: 0.25rem;">$${dailyProfit.toFixed(2)} (${(inv.dailyProfitRate * 100).toFixed(2)}%)</div>
-          </div>
-          <div>
-            <div class="text-muted small">Total Earned</div>
-            <div style="font-weight: 600; color: hsl(var(--chart-2)); margin-top: 0.25rem;">$${inv.totalProfit.toFixed(2)}</div>
-          </div>
-          <div>
-            <div class="text-muted small">Days Remaining</div>
-            <div style="font-weight: 600; margin-top: 0.25rem;">${daysRemaining} / ${inv.duration}</div>
-          </div>
-        </div>
-        
-        <div>
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-            <span class="text-muted small">Progress</span>
-            <span class="small" style="font-weight: 600;">${progress.toFixed(1)}%</span>
-          </div>
-          <div style="width: 100%; background-color: hsl(var(--muted)); border-radius: 9999px; height: 8px;">
-            <div style="width: ${progress}%; background-color: hsl(var(--chart-2)); height: 100%; border-radius: 9999px; transition: width 0.3s;"></div>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('') : '<div class="card"><p class="text-muted" style="text-align: center; padding: 2rem;">No active investment plans. <a href="#investment-plans" style="color: hsl(var(--primary));">Browse available plans</a></p></div>';
-  
-  const html = `
-    <div style="margin-bottom: 1.5rem;">
-      <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">My Investments</h1>
-      <p class="text-muted">Track your active investment plans and trading positions</p>
-    </div>
-    <div class="stats-grid" style="margin-bottom: 1.5rem;">
-      <div class="card stat-card">
-        <div class="stat-label">Total Balance</div>
-        <div class="stat-value">$${user.balance.toFixed(2)}</div>
-      </div>
-      <div class="card stat-card">
-        <div class="stat-label">Active Investments</div>
-        <div class="stat-value">${plan.length}</div>
-      </div>
-      <div class="card stat-card">
-        <div class="stat-label">Investment Profit</div>
-        <div class="stat-value" style="color: hsl(var(--chart-2));">$${plan.reduce((sum, inv) => sum + inv.totalProfit, 0).toFixed(2)}</div>
-      </div>
-      <div class="card stat-card">
-        <div class="stat-label">Total P&L</div>
-        <div class="stat-value" style="color: ${totalPnL >= 0 ? 'hsl(var(--chart-2))' : 'hsl(var(--destructive))'};">${totalPnL >= 0 ? '+' : ''}$${totalPnL.toFixed(2)}</div>
-      </div>
-    </div>
-    
-    ${plan.length > 0 ? `
-      <div style="margin-bottom: 1.5rem;">
-        <h2 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">Active Investment Plans</h2>
-        ${investmentsHTML}
-      </div>
-    ` : investmentsHTML}
-    <div class="card">
-      <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Transaction History</h2>
-      ${user.transactions.length > 0 ? `
-        <div class="table-container">
-          <table>
-            <thead>
+        </div>`;
+          })
+          .join("")
+      : `<div class="card"><p class="text-muted" style="text-align:center;padding:2rem;">No active investment plans. <a href="#investment-plans" style="color:hsl(var(--primary));">Browse available plans</a></p></div>`;
+
+  // Tables (renamed)
+  const depositsTable = user.transactions?.length
+    ? `
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          ${user.transactions
+            .slice()
+            .reverse()
+            .map(
+              d => `
               <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${user.transactions.slice().reverse().map(t => `
-                <tr>
-                  <td style="font-weight: 600;">${new Date(t.timestamp).toLocaleDateString()}</td>
-                  <td><span class="badge">${t.type}</span></td>
-                  <td>$${t.amount}</td>
-                  <td><span class="badge" style="${t.status === 'active' || t.status === 'completed' ? 'background-color: hsl(var(--chart-2)); color: white;' : ''}">${t.status}</span></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      ` : `
-        <p class="text-muted" style="text-align: center; padding: 2rem;">No transactions yet. Start trading to see your portfolio!</p>
-      `}
+                <td>${new Date(d.timestamp).toLocaleDateString()}</td>
+                <td>$${d.amount}</td>
+                <td>${d.method}</td>
+                <td><span class="badge" style="background:${
+                  d.status === "Approved"
+                    ? "hsl(var(--chart-2))"
+                    : "hsl(var(--destructive))"
+                };color:white;">${d.status}</span></td>
+              </tr>`
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>`
+    : `<p class="text-muted" style="text-align:center;padding:2rem;">No deposits found.</p>`;
+
+  const withdrawalsTable = user.withdrawals?.length
+    ? `
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          ${user.withdrawals
+            .slice()
+            .reverse()
+            .map(
+              w => `
+              <tr>
+                <td>${new Date(w.timestamp).toLocaleDateString()}</td>
+                <td>$${w.amount}</td>
+                <td>${w.method}</td>
+                <td><span class="badge" style="background:${
+                  w.status === "Approved"
+                    ? "hsl(var(--chart-2))"
+                    : "hsl(var(--destructive))"
+                };color:white;">${w.status}</span></td>
+              </tr>`
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>`
+    : `<p class="text-muted" style="text-align:center;padding:2rem;">No withdrawals found.</p>`;
+
+  const html = `
+    <div style="margin-bottom:1.5rem;">
+      <h1 style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">My Investments</h1>
+      <p class="text-muted">Track your active investment plans, deposits, and withdrawals</p>
     </div>
+
+    <div class="stats-grid" style="margin-bottom:1.5rem;">
+      <div class="card stat-card"><div class="stat-label">Total Balance</div><div class="stat-value">$${user.balance.toFixed(
+        2
+      )}</div></div>
+      <div class="card stat-card"><div class="stat-label">Active Investments</div><div class="stat-value">${plan.length}</div></div>
+      <div class="card stat-card"><div class="stat-label">Investment Profit</div><div class="stat-value" style="color:hsl(var(--chart-2));">$${plan
+        .reduce((sum, inv) => sum + inv.totalProfit, 0)
+        .toFixed(2)}</div></div>
+      <div class="card stat-card"><div class="stat-label">Total P&L</div><div class="stat-value" style="color:${
+        totalPnL >= 0 ? "hsl(var(--chart-2))" : "hsl(var(--destructive))"
+      };">${totalPnL >= 0 ? "+" : ""}$${totalPnL.toFixed(2)}</div></div>
+    </div>
+
+    ${plan.length > 0 ? `<h2 style="font-size:1.125rem;font-weight:600;margin-bottom:1rem;">Active Investment Plans</h2>${investmentsHTML}` : investmentsHTML}
+
+    <div class="card" style="margin-top:1.5rem;">
+      <div style="display:flex;justify-content:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+        <button class="tab-btn active" data-tab="investments">Investments</button>
+        <button class="tab-btn" data-tab="deposits">Deposits</button>
+        <button class="tab-btn" data-tab="withdrawals">Withdrawals</button>
+      </div>
+
+      <div id="tab-content">
+        <div id="tab-investments">${user.plan.length ? `
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead><tr><th>Date</th><th>Plan</th><th>Amount</th><th>Profit</th><th>Status</th></tr></thead>
+              <tbody>
+                ${user.plan
+                  .slice()
+                  .reverse()
+                  .map(
+                    t => `
+                    <tr>
+                      <td>${new Date(t.timestamp).toLocaleDateString()}</td>
+                      <td>${t.planName}</td>
+                      <td>$${t.amount}</td>
+                      <td>$${t.totalProfit}</td>
+                      <td><span class="badge" style="${
+                        t.status === "active" || t.status === "completed"
+                          ? "background-color:hsl(var(--chart-2));color:white;"
+                          : ""
+                      }">${t.status}</span></td>
+                    </tr>`
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </div>` : `<p class="text-muted" style="text-align:center;padding:2rem;">No investments yet.</p>`}
+        </div>
+        <div id="tab-deposits" style="display:none;">${depositsTable}</div>
+        <div id="tab-withdrawals" style="display:none;">${withdrawalsTable}</div>
+      </div>
+    </div>
+
+    <style>
+      .tab-btn {
+        background: none;
+        border: 1px solid hsl(var(--border));
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+      .tab-btn:hover { background: hsl(var(--muted)); }
+      .tab-btn.active { background: hsl(var(--chart-2)); color: white; }
+
+      .table-scroll {
+        overflow-x: auto;
+        width: 100%;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 700px;
+      }
+      .data-table th, .data-table td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid hsl(var(--border));
+        white-space: nowrap;
+      }
+      .data-table th {
+        color: hsl(var(--muted-foreground));
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+    </style>
   `;
-  
+
   content.innerHTML = html;
+
+  // New tab switcher logic
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const target = btn.dataset.tab;
+      document.querySelectorAll("#tab-content > div").forEach(div => (div.style.display = "none"));
+      document.getElementById("tab-" + target).style.display = "block";
+    });
+  });
 }
+
 function renderInvestmentPlansPage() {
   const user = getUserData();
   const plans = getInvestmentPlans();
@@ -2615,7 +2738,7 @@ function renderInvestmentPlansPage() {
           </div>
           <div>
             <div class="text-muted small">Duration</div>
-            <div style="font-weight: 600; margin-top: 0.25rem;">${plan.duration} Days</div>
+            <div style="font-weight: 600; margin-top: 0.25rem;">${plan.durationn} Hours</div>
           </div>
           <div>
             <div class="text-muted small">Your Balance</div>
@@ -2668,7 +2791,7 @@ function renderWithdrawalPage() {
   const html = `
     <div style="margin-bottom: 1.5rem;">
       <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Withdrawal</h1>
-      <p class="text-muted">Request a withdrawal from your account (Available: $${user.balance.toFixed(2)})</p>
+      <p class="text-muted">Request a withdrawal from your account (Available: $${user.profit.toFixed(2)})</p>
     </div>
     <div class="card" style="max-width: 42rem;">
       <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Make Withdrawal</h2>
@@ -2693,7 +2816,7 @@ function renderWithdrawalPage() {
           <input type="text" id="withdrawalAddress" class="input" placeholder="Enter your wallet address or bank account" required>
         </div>
         <div style="padding: 1rem; background-color: hsl(var(--muted) / 0.5); border-radius: 0.5rem; border: 1px solid hsl(var(--border)); margin-bottom: 1.5rem;">
-          <p class="text-muted small">Please note: Withdrawals may take a few minutes to process. A processing fee may apply.</p>
+          <p class="text-muted small">Please note: Withdrawals may take a few minutes to process.</p>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Request Withdrawal</button>
       </form>
@@ -2737,7 +2860,7 @@ function renderWithdrawalPage() {
     const amount = parseFloat(document.getElementById('withdrawalAmount').value);
     const address = document.getElementById('withdrawalAddress').value;
 
-    if (amount > user.balance) {
+    if (amount > user.profit) {
       Swal.fire({ icon: 'error', title: 'Insufficient Balance', text: 'You do not have enough funds for this withdrawal', confirmButtonText: 'OK' });
       return;
     }
@@ -2945,7 +3068,7 @@ async function handleEditProfile() {
   try {
     const response = await $.ajax({
       type: "GET",
-      url: `https://smartgen-render.onrender.com/users/${userFromLS.email}`,
+      url: `https://wealt-render.onrender.com/users/${userFromLS.email}`,
       dataType: "json",
       timeout: 30000
     });
@@ -2990,7 +3113,7 @@ async function handleEditProfile() {
   try {
     const updateResponse = await $.ajax({
       type: "PUT",
-      url: `https://smartgen-render.onrender.com/users/${userInfo._id}/profile/update`,
+      url: `https://wealt-render.onrender.com/users/${userInfo._id}/profile/update`,
       dataType: "json",
       data: { firstName, lastName, email, mobile, country },
       timeout: 30000
@@ -3151,7 +3274,7 @@ document.getElementById("startCopyTrade").onclick = async () => {
 
 
   try {
-    const res = await fetch("https://smartgen-render.onrender.com/transactions/copy-trade/start", {
+    const res = await fetch("https://wealt-render.onrender.com/transactions/copy-trade/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
